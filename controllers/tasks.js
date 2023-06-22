@@ -50,6 +50,8 @@ const updateTask = async (req, res) => {
   try {
     if (req.body.complete) {
       req.body.completed = true;
+    } else {
+      req.body.completed = false;
     }
     task = await Task.findById(req.params.id);
     await Task.findByIdAndUpdate(req.params.id, req.body, {
